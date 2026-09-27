@@ -1,21 +1,37 @@
 name: Auto Update Odds
 on:
   schedule:
-    - cron: '*/5 * * * *'  # 每5分鐘跑一次，免費
-  workflow_dispatch: # 手動都可以按
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-      - run: pip install requests
-      - run: python scraper_free.py  # 你個免費抓馬會程式
-      - run: |
-          git config user.name "bot"
-          git config user.email "bot@bot.com"
-          git add data.json
-          git commit -m "auto update odds T1/T2/T3" || true
+
+      - name: Install
+        run: pip install requests
+
+      - name: Run scraper
+        run: |
+          python scraper_free.py || echo "scraper failed but continue"
+          ls -la
+          cat data.json || echo "no data.json"
+
+      - name: Commit & Push
+        run: |
+          git config user.name "auto-bot"
+          git config user.email "bot@github.com"
+          git add data.json odds_history.json || git add .
+          git diff --staged --quiet || git commit -m "auto: T1/T2/T3 update $(date)"
           git push
