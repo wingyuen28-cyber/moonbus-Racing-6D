@@ -1,24 +1,25 @@
-<!DOCTYPE html><html lang="zh-HK"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>6維賽馬 v7.2 獨立版</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}body{background:#0e0e10;color:#eaeaea;padding:10px}.header{background:linear-gradient(135deg,#1a1a2e,#16213e);padding:14px;border-radius:14px;margin-bottom:10px;border:1px solid #333}.race-tabs{display:flex;gap:6px;overflow-x:auto;padding:8px 0}.race-tab{padding:8px 14px;background:#1e1e24;border-radius:20px;font-size:12px;white-space:nowrap;border:1px solid #333}.race-tab.active{background:#ff4757;color:#fff}.horse-card{background:#18181c;border-radius:12px;padding:10px;margin-bottom:10px;border:1px solid #2a2a2e}.horse-meta{font-size:10px;color:#888}.odds-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1.2fr;gap:5px;margin:6px 0}.t-box{background:#1f1f25;border-radius:8px;padding:6px;text-align:center}.t-box.final{background:#ff4757;color:#fff}.t-label{font-size:8px;color:#aaa}.t-val{font-size:14px;font-weight:900;display:block}.rec{border-radius:10px;padding:10px;margin-bottom:8px;font-size:11px}.green{background:#162a1a;border-left:4px solid #2ed573}.red{background:#2a161a;border-left:4px solid #ff4757}.yellow{background:#2a2416;border-left:4px solid #ffa502}</style></head><body>
-<div class="header"><h1>🏁 6維終極版 v7.2 獨立版 - 已修復</h1><p style="font-size:10px;color:#2ed573">✅ 無需 data.json | 即開即有排位表</p></div>
+<!DOCTYPE html><html lang="zh-HK"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>6維賽馬 v8 全場次版</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}body{background:#0e0e10;color:#eaeaea;padding:10px}.header{background:linear-gradient(135deg,#1a1a2e,#16213e);padding:14px;border-radius:14px;margin-bottom:10px;border:1px solid #333}.race-tabs{display:flex;gap:6px;overflow-x:auto;padding:8px 0;scrollbar-width:none}.race-tab{padding:8px 14px;background:#1e1e24;border-radius:20px;font-size:12px;white-space:nowrap;border:1px solid #333;cursor:pointer}.race-tab.active{background:#ff4757;color:#fff;border-color:#ff4757}.horse-card{background:#18181c;border-radius:12px;padding:10px;margin-bottom:10px;border:1px solid #2a2a2e}.odds-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1.2fr;gap:5px;margin:6px 0}.t-box{background:#1f1f25;border-radius:8px;padding:6px;text-align:center}.t-box.final{background:#ff4757;color:#fff}.t-val{font-size:14px;font-weight:900;display:block}.rec{border-radius:10px;padding:10px;margin-bottom:8px;font-size:11px}.green{background:#162a1a;border-left:4px solid #2ed573}.red{background:#2a161a;border-left:4px solid #ff4757}.yellow{background:#2a2416;border-left:4px solid #ffa502}</style></head><body>
+<div class="header"><h1>🏁 6維 v8 - 全場次自動版</h1><p id="updated" style="font-size:10px;color:#2ed573">檢查賽日中...</p><p id="raceCount" style="font-size:11px;color:#aaa;margin-top:4px"></p></div>
 <div class="race-tabs" id="tabs"></div>
 <div id="info" style="background:#18181c;padding:10px;border-radius:10px;margin:10px 0;font-size:11px"></div>
-<div id="recs"></div>
-<div id="horses"></div>
+<div id="recs"></div><div id="horses"></div>
 <script>
-const DATA={races:[
-{race_no:1,venue:"沙田",distance:1200,class:"4",track:"好地",horses:[
-{no:1,name:"金鑽貴人",draw:3,jockey:"潘頓",trainer:"文家良",weight:133,age:6,gear:"B",last6:"1-1-2-1",fund:90,total:92,grade:"A+",t1:2.8,t2:2.5,t3:2.2,drop:21.4,smart:false},
-{no:2,name:"浪漫勇士",draw:1,jockey:"麥道朗",trainer:"沈集成",weight:135,age:6,gear:"--",last6:"1-1-1-2",fund:88,total:88,grade:"A+",t1:15,t2:9.5,t3:6.5,drop:56.6,smart:true},
-{no:3,name:"包裝天將",draw:5,jockey:"田泰安",trainer:"呂健威",weight:130,age:5,gear:"CP",last6:"2-3-1",fund:84,total:86,grade:"A",t1:6.5,t2:5.8,t3:5.0,drop:23,smart:false},
-{no:8,name:"爆冷王",draw:10,jockey:"何澤堯",trainer:"希斯",weight:120,age:4,gear:"TT",last6:"6-5-4",fund:70,total:78,grade:"A",t1:28,t2:22,t3:14,drop:50,smart:true}
-]},
-{race_no:2,venue:"沙田",distance:1400,class:"3",track:"好地",horses:[
-{no:3,name:"永遠美麗",draw:2,jockey:"潘頓",trainer:"蔡約翰",weight:128,age:4,gear:"B",last6:"2-1-1",fund:86,total:87,grade:"A+",t1:3.5,t2:3.2,t3:3.0,drop:14.2,smart:false},
-{no:7,name:"超級跑車",draw:8,jockey:"布文",trainer:"羅富全",weight:119,age:5,gear:"H",last6:"8-7-6",fund:65,total:60,grade:"B",t1:35,t2:40,t3:51,drop:-45,smart:false}
-]}
-]};
-let cur=0;
+let DATA=null,cur=0;
+async function load(){
+ try{
+  const r=await fetch('data.json?v='+Date.now());
+  DATA=await r.json();
+  document.getElementById('updated').innerText='✅ 更新: '+DATA.updated+' | 自動抓取';
+  document.getElementById('raceCount').innerText=`今日共 ${DATA.races.length} 場賽事 - 全部自動顯示`;
+ }catch(e){
+  DATA={updated:"示範 - 10場",races:[]};
+  for(let i=1;i<=10;i++){DATA.races.push({race_no:i,venue:"沙田",distance:i%2==0?1200:1400,class:"3",track:"好地",horses:[{no:1,name:`示範${i}-1`,draw:1,jockey:"潘頓",trainer:"沈集成",weight:133,age:5,gear:"B",last6:"1-1-2",fund:90,total:92,grade:"A+",t1:2.8,t2:2.5,t3:2.2,drop:21.4,smart:false},{no:2,name:`浪漫勇士${i}`,draw:2,jockey:"麥道朗",trainer:"沈集成",weight:135,age:6,gear:"--",last6:"1-1-1",fund:88,total:88,grade:"A+",t1:15,t2:9.5,t3:6.5,drop:56.6,smart:true}]});}
+  document.getElementById('updated').innerText='📱 示範模式: 10場 (賽日會自動變真實場數)';
+  document.getElementById('raceCount').innerText=`示範共 ${DATA.races.length} 場 | 賽日自動顯示8-11場`;
+ }
+ renderTabs();selectRace(0);
+}
 function renderTabs(){document.getElementById('tabs').innerHTML=DATA.races.map((r,i)=>`<div class="race-tab ${i==cur?'active':''}" onclick="selectRace(${i})">第${r.race_no}場 ${r.distance}m</div>`).join('');}
-function selectRace(i){cur=i;renderTabs();const rc=DATA.races[i];document.getElementById('info').innerHTML=`<b>第${rc.race_no}場 ${rc.venue} ${rc.distance}m ${rc.class}班 ${rc.track}</b> | ${rc.horses.length}匹參賽 | 真排位表`;const solid=[...rc.horses].sort((a,b)=>b.fund-a.fund).slice(0,2);const heavy=[...rc.horses].sort((a,b)=>b.drop-a.drop).slice(0,2);const outs=rc.horses.filter(h=>h.t3>=10 && h.drop>=30);document.getElementById('recs').innerHTML=`<div class="rec green">🟢 最合理 ${solid.map(h=>h.no+'號 '+h.name).join(' | ')}</div><div class="rec red">🔴 重票 ${heavy.map(h=>h.no+'號 -'+h.drop+'%').join(' | ')}</div><div class="rec yellow">⚡️ 爆冷 ${outs.length?outs.map(h=>h.no+'號 '+h.name+' '+h.t3+'倍').join(' | '):'暫無'}</div>`;document.getElementById('horses').innerHTML=rc.horses.sort((a,b)=>b.total-a.total).map(h=>`<div class="horse-card"><b>${h.no}號 ${h.name} ${h.draw}檔</b> <span style="float:right;background:${h.grade=='A+'?'#2ed573':'#70a1ff'};color:#000;padding:2px 6px;border-radius:10px;font-size:10px">${h.grade} ${h.total}分</span><div class="horse-meta">🐴 ${h.jockey}/${h.trainer} | ${h.age}歲 ${h.weight}磅 ${h.gear} | 近績:${h.last6} ${h.smart?'🔥Smart Money':''} ${h.t3>=12 && h.drop>=25?'💎Value':''}</div><div class="odds-grid"><div class="t-box"><span class="t-label">T1隔夜</span><span class="t-val">${h.t1}倍</span></div><div class="t-box"><span class="t-label">T2中段</span><span class="t-val">${h.t2}倍</span></div><div class="t-box"><span class="t-label">T3臨場</span><span class="t-val">${h.t3}倍</span></div><div class="t-box final"><span class="t-label">T3vsT1</span><span class="t-val">-${h.drop}%</span></div></div></div>`).join('');}
-renderTabs();selectRace(0);
+function selectRace(i){cur=i;renderTabs();const rc=DATA.races[i];document.getElementById('info').innerHTML=`<b>第${rc.race_no}場 ${rc.venue} ${rc.distance}m ${rc.class}班 ${rc.track}</b> | ${rc.horses.length}匹 | 真排位表`;const solid=[...rc.horses].sort((a,b)=>b.fund-a.fund).slice(0,4);const heavy=[...rc.horses].sort((a,b)=>b.drop-a.drop).slice(0,4);const outs=rc.horses.filter(h=>h.t3>=12 && h.drop>=25).slice(0,2);document.getElementById('recs').innerHTML=`<div class="rec green">🟢 最合理 ${solid.map(h=>h.no+'號').join(' ')}</div><div class="rec red">🔴 重票 ${heavy.map(h=>h.no+'號 -'+h.drop+'%').join(' | ')}</div><div class="rec yellow">⚡️ 爆冷 ${outs.length?outs.map(h=>h.no+'號 '+h.t3+'倍').join(' | '):'暫無'}</div>`;document.getElementById('horses').innerHTML=rc.horses.map(h=>`<div class="horse-card"><b>${h.no}號 ${h.name} ${h.draw}檔</b><div style="font-size:10px;color:#888">🐴 ${h.jockey}/${h.trainer} | ${h.age}歲 ${h.weight}磅 ${h.gear} | ${h.last6} ${h.smart?'🔥Smart':''}</div><div class="odds-grid"><div class="t-box"><span class="t-val">${h.t1}倍</span><span style="font-size:8px">T1隔夜</span></div><div class="t-box"><span class="t-val">${h.t2}倍</span><span style="font-size:8px">T2中段</span></div><div class="t-box"><span class="t-val">${h.t3}倍</span><span style="font-size:8px">T3臨場</span></div><div class="t-box final"><span class="t-val">-${h.drop}%</span><span style="font-size:8px">T3vsT1</span></div></div></div>`).join('');}
+load();
 </script></body></html>
