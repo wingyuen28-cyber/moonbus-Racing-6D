@@ -1,254 +1,3749 @@
 {
-  "race": "沙田 2026/09/27 即時",
-  "timestamp": "2026-09-27T15:11:06.430943",
-  "horses": [
+  "updated": "2026-09-27T15:22:53.327336",
+  "races": [
     {
-      "no": 5,
-      "name": "測試馬5",
-      "draw": 5,
-      "style": "後上",
-      "jockey": "潘頓",
-      "trainer": "沈集成",
-      "d1": 80,
-      "d2": 70,
-      "d3": 85,
-      "d4": 75,
-      "d5": 92,
-      "fundamental": 77,
-      "total": 83,
-      "grade": "A+",
-      "grade_label": "高把握度",
-      "d1_desc": "獨贏12%",
-      "d2_desc": "5檔 上名15%",
-      "d3_desc": "默契",
-      "d4_desc": "狀態正常",
-      "d5_desc": "T1 15.0→T2 9.5→T3 6.5 | T3vsT1 -56.7%",
-      "d5_tags": [],
-      "d5_display": {
-        "t1": {
-          "value": 15.0,
-          "diff": 0,
-          "label": "T1 隔夜 20%"
+      "race_no": 1,
+      "venue": "ST",
+      "distance": 1200,
+      "class": "3",
+      "track": "好地",
+      "horses": [
+        {
+          "no": 1,
+          "name": "馬王1號",
+          "draw": 1,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
         },
-        "t2": {
-          "value": 9.5,
-          "diff": 36.666666666666664,
-          "label": "T2 中段 30%"
+        {
+          "no": 2,
+          "name": "馬王2號",
+          "draw": 2,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
         },
-        "t3": {
-          "value": 6.5,
-          "diff": 31.57894736842105,
-          "label": "T3 臨場 50%"
+        {
+          "no": 3,
+          "name": "馬王3號",
+          "draw": 3,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
         },
-        "t3_vs_t1": {
-          "value": 6.5,
-          "diff": 56.666666666666664,
-          "is_smart": true,
-          "label": "T3 vs T1 終極"
+        {
+          "no": 4,
+          "name": "馬王4號",
+          "draw": 4,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
         },
-        "all_drops": {
-          "WIN": {
-            "t1": 15.0,
-            "t2": 9.5,
-            "t3": 6.5,
-            "t1_t2": 36.666666666666664,
-            "t2_t3": 31.57894736842105,
-            "t1_t3": 56.666666666666664
-          }
+        {
+          "no": 5,
+          "name": "馬王5號",
+          "draw": 5,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            15.0,
+            9.5,
+            6.5
+          ],
+          "fund": 85,
+          "total": 88,
+          "d5_display": {
+            "t1": {
+              "value": 15.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 9.5,
+              "diff": 36.666666666666664
+            },
+            "t3": {
+              "value": 6.5,
+              "diff": 31.57894736842105
+            },
+            "t3_vs_t1": {
+              "value": 6.5,
+              "diff": 56.666666666666664,
+              "is_smart": true
+            }
+          },
+          "tags": [
+            "🔥Smart",
+            "💎Value"
+          ]
         },
-        "cross_pool_count": 2
-      },
-      "odds": {
-        "win": [
-          15.0,
-          9.5,
-          6.5
-        ],
-        "place": [
-          4.2,
-          3.1,
-          2.2
-        ]
-      },
-      "is_dead_draw": false,
-      "injury_alert": ""
+        {
+          "no": 6,
+          "name": "馬王6號",
+          "draw": 6,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 7,
+          "name": "馬王7號",
+          "draw": 7,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 8,
+          "name": "馬王8號",
+          "draw": 8,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 9,
+          "name": "馬王9號",
+          "draw": 9,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 10,
+          "name": "馬王10號",
+          "draw": 10,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 11,
+          "name": "馬王11號",
+          "draw": 11,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 12,
+          "name": "馬王12號",
+          "draw": 12,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        }
+      ]
     },
     {
-      "no": 8,
-      "name": "測試馬8",
-      "draw": 5,
-      "style": "後上",
-      "jockey": "潘頓",
-      "trainer": "沈集成",
-      "d1": 80,
-      "d2": 28,
-      "d3": 85,
-      "d4": 75,
-      "d5": 92,
-      "fundamental": 67,
-      "total": 77,
-      "grade": "A",
-      "grade_label": "高把握度",
-      "d1_desc": "獨贏12%",
-      "d2_desc": "11檔 上名15%",
-      "d3_desc": "默契",
-      "d4_desc": "狀態正常",
-      "d5_desc": "T1 28.0→T2 22.0→T3 14.0 | T3vsT1 -50.0%",
-      "d5_tags": [
-        "🛡️大戶保險盤 W14.0 vs P2.8"
-      ],
-      "d5_display": {
-        "t1": {
-          "value": 28.0,
-          "diff": 0,
-          "label": "T1 隔夜 20%"
+      "race_no": 2,
+      "venue": "ST",
+      "distance": 1200,
+      "class": "3",
+      "track": "好地",
+      "horses": [
+        {
+          "no": 1,
+          "name": "馬王1號",
+          "draw": 1,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
         },
-        "t2": {
-          "value": 22.0,
-          "diff": 21.428571428571427,
-          "label": "T2 中段 30%"
+        {
+          "no": 2,
+          "name": "馬王2號",
+          "draw": 2,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
         },
-        "t3": {
-          "value": 14.0,
-          "diff": 36.36363636363637,
-          "label": "T3 臨場 50%"
+        {
+          "no": 3,
+          "name": "馬王3號",
+          "draw": 3,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
         },
-        "t3_vs_t1": {
-          "value": 14.0,
-          "diff": 50.0,
-          "is_smart": true,
-          "label": "T3 vs T1 終極"
+        {
+          "no": 4,
+          "name": "馬王4號",
+          "draw": 4,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
         },
-        "all_drops": {
-          "WIN": {
-            "t1": 28.0,
-            "t2": 22.0,
-            "t3": 14.0,
-            "t1_t2": 21.428571428571427,
-            "t2_t3": 36.36363636363637,
-            "t1_t3": 50.0
-          }
+        {
+          "no": 5,
+          "name": "馬王5號",
+          "draw": 5,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            15.0,
+            9.5,
+            6.5
+          ],
+          "fund": 85,
+          "total": 88,
+          "d5_display": {
+            "t1": {
+              "value": 15.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 9.5,
+              "diff": 36.666666666666664
+            },
+            "t3": {
+              "value": 6.5,
+              "diff": 31.57894736842105
+            },
+            "t3_vs_t1": {
+              "value": 6.5,
+              "diff": 56.666666666666664,
+              "is_smart": true
+            }
+          },
+          "tags": [
+            "🔥Smart",
+            "💎Value"
+          ]
         },
-        "cross_pool_count": 2
-      },
-      "odds": {
-        "win": [
-          28.0,
-          22.0,
-          14.0
-        ],
-        "place": [
-          5.0,
-          4.0,
-          2.8
-        ]
-      },
-      "is_dead_draw": true,
-      "injury_alert": ""
+        {
+          "no": 6,
+          "name": "馬王6號",
+          "draw": 6,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 7,
+          "name": "馬王7號",
+          "draw": 7,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 8,
+          "name": "馬王8號",
+          "draw": 8,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 9,
+          "name": "馬王9號",
+          "draw": 9,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 10,
+          "name": "馬王10號",
+          "draw": 10,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 11,
+          "name": "馬王11號",
+          "draw": 11,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 12,
+          "name": "馬王12號",
+          "draw": 12,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        }
+      ]
     },
     {
-      "no": 3,
-      "name": "測試馬3",
-      "draw": 5,
-      "style": "後上",
-      "jockey": "潘頓",
-      "trainer": "沈集成",
-      "d1": 80,
-      "d2": 28,
-      "d3": 85,
-      "d4": 75,
-      "d5": 70,
-      "fundamental": 67,
-      "total": 68,
-      "grade": "B",
-      "grade_label": "高把握度",
-      "d1_desc": "獨贏12%",
-      "d2_desc": "11檔 上名15%",
-      "d3_desc": "默契",
-      "d4_desc": "狀態正常",
-      "d5_desc": "T1 3.5→T2 3.2→T3 2.8 | T3vsT1 -20.0%",
-      "d5_tags": [],
-      "d5_display": {
-        "t1": {
-          "value": 3.5,
-          "diff": 0,
-          "label": "T1 隔夜 20%"
+      "race_no": 3,
+      "venue": "ST",
+      "distance": 1200,
+      "class": "3",
+      "track": "好地",
+      "horses": [
+        {
+          "no": 1,
+          "name": "馬王1號",
+          "draw": 1,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
         },
-        "t2": {
-          "value": 3.2,
-          "diff": 8.571428571428566,
-          "label": "T2 中段 30%"
+        {
+          "no": 2,
+          "name": "馬王2號",
+          "draw": 2,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
         },
-        "t3": {
-          "value": 2.8,
-          "diff": 12.50000000000001,
-          "label": "T3 臨場 50%"
+        {
+          "no": 3,
+          "name": "馬王3號",
+          "draw": 3,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
         },
-        "t3_vs_t1": {
-          "value": 2.8,
-          "diff": 20.000000000000004,
-          "is_smart": false,
-          "label": "T3 vs T1 終極"
+        {
+          "no": 4,
+          "name": "馬王4號",
+          "draw": 4,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
         },
-        "all_drops": {
-          "WIN": {
-            "t1": 3.5,
-            "t2": 3.2,
-            "t3": 2.8,
-            "t1_t2": 8.571428571428566,
-            "t2_t3": 12.50000000000001,
-            "t1_t3": 20.000000000000004
-          }
+        {
+          "no": 5,
+          "name": "馬王5號",
+          "draw": 5,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            15.0,
+            9.5,
+            6.5
+          ],
+          "fund": 85,
+          "total": 88,
+          "d5_display": {
+            "t1": {
+              "value": 15.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 9.5,
+              "diff": 36.666666666666664
+            },
+            "t3": {
+              "value": 6.5,
+              "diff": 31.57894736842105
+            },
+            "t3_vs_t1": {
+              "value": 6.5,
+              "diff": 56.666666666666664,
+              "is_smart": true
+            }
+          },
+          "tags": [
+            "🔥Smart",
+            "💎Value"
+          ]
         },
-        "cross_pool_count": 0
-      },
-      "odds": {
-        "win": [
-          3.5,
-          3.2,
-          2.8
-        ],
-        "place": [
-          1.8,
-          1.7,
-          1.5
-        ]
-      },
-      "is_dead_draw": true,
-      "injury_alert": ""
+        {
+          "no": 6,
+          "name": "馬王6號",
+          "draw": 6,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 7,
+          "name": "馬王7號",
+          "draw": 7,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 8,
+          "name": "馬王8號",
+          "draw": 8,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 9,
+          "name": "馬王9號",
+          "draw": 9,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 10,
+          "name": "馬王10號",
+          "draw": 10,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 11,
+          "name": "馬王11號",
+          "draw": 11,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 12,
+          "name": "馬王12號",
+          "draw": 12,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        }
+      ]
+    },
+    {
+      "race_no": 4,
+      "venue": "ST",
+      "distance": 1200,
+      "class": "3",
+      "track": "好地",
+      "horses": [
+        {
+          "no": 1,
+          "name": "馬王1號",
+          "draw": 1,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 2,
+          "name": "馬王2號",
+          "draw": 2,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 3,
+          "name": "馬王3號",
+          "draw": 3,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 4,
+          "name": "馬王4號",
+          "draw": 4,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 5,
+          "name": "馬王5號",
+          "draw": 5,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            15.0,
+            9.5,
+            6.5
+          ],
+          "fund": 85,
+          "total": 88,
+          "d5_display": {
+            "t1": {
+              "value": 15.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 9.5,
+              "diff": 36.666666666666664
+            },
+            "t3": {
+              "value": 6.5,
+              "diff": 31.57894736842105
+            },
+            "t3_vs_t1": {
+              "value": 6.5,
+              "diff": 56.666666666666664,
+              "is_smart": true
+            }
+          },
+          "tags": [
+            "🔥Smart",
+            "💎Value"
+          ]
+        },
+        {
+          "no": 6,
+          "name": "馬王6號",
+          "draw": 6,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 7,
+          "name": "馬王7號",
+          "draw": 7,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 8,
+          "name": "馬王8號",
+          "draw": 8,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 9,
+          "name": "馬王9號",
+          "draw": 9,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 10,
+          "name": "馬王10號",
+          "draw": 10,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 11,
+          "name": "馬王11號",
+          "draw": 11,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 12,
+          "name": "馬王12號",
+          "draw": 12,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        }
+      ]
+    },
+    {
+      "race_no": 5,
+      "venue": "ST",
+      "distance": 1200,
+      "class": "3",
+      "track": "好地",
+      "horses": [
+        {
+          "no": 1,
+          "name": "馬王1號",
+          "draw": 1,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 2,
+          "name": "馬王2號",
+          "draw": 2,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 3,
+          "name": "馬王3號",
+          "draw": 3,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 4,
+          "name": "馬王4號",
+          "draw": 4,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 5,
+          "name": "馬王5號",
+          "draw": 5,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            15.0,
+            9.5,
+            6.5
+          ],
+          "fund": 85,
+          "total": 88,
+          "d5_display": {
+            "t1": {
+              "value": 15.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 9.5,
+              "diff": 36.666666666666664
+            },
+            "t3": {
+              "value": 6.5,
+              "diff": 31.57894736842105
+            },
+            "t3_vs_t1": {
+              "value": 6.5,
+              "diff": 56.666666666666664,
+              "is_smart": true
+            }
+          },
+          "tags": [
+            "🔥Smart",
+            "💎Value"
+          ]
+        },
+        {
+          "no": 6,
+          "name": "馬王6號",
+          "draw": 6,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 7,
+          "name": "馬王7號",
+          "draw": 7,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 8,
+          "name": "馬王8號",
+          "draw": 8,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 9,
+          "name": "馬王9號",
+          "draw": 9,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 10,
+          "name": "馬王10號",
+          "draw": 10,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 11,
+          "name": "馬王11號",
+          "draw": 11,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 12,
+          "name": "馬王12號",
+          "draw": 12,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        }
+      ]
+    },
+    {
+      "race_no": 6,
+      "venue": "ST",
+      "distance": 1200,
+      "class": "3",
+      "track": "好地",
+      "horses": [
+        {
+          "no": 1,
+          "name": "馬王1號",
+          "draw": 1,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 2,
+          "name": "馬王2號",
+          "draw": 2,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 3,
+          "name": "馬王3號",
+          "draw": 3,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 4,
+          "name": "馬王4號",
+          "draw": 4,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 5,
+          "name": "馬王5號",
+          "draw": 5,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            15.0,
+            9.5,
+            6.5
+          ],
+          "fund": 85,
+          "total": 88,
+          "d5_display": {
+            "t1": {
+              "value": 15.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 9.5,
+              "diff": 36.666666666666664
+            },
+            "t3": {
+              "value": 6.5,
+              "diff": 31.57894736842105
+            },
+            "t3_vs_t1": {
+              "value": 6.5,
+              "diff": 56.666666666666664,
+              "is_smart": true
+            }
+          },
+          "tags": [
+            "🔥Smart",
+            "💎Value"
+          ]
+        },
+        {
+          "no": 6,
+          "name": "馬王6號",
+          "draw": 6,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 7,
+          "name": "馬王7號",
+          "draw": 7,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 8,
+          "name": "馬王8號",
+          "draw": 8,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 9,
+          "name": "馬王9號",
+          "draw": 9,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 10,
+          "name": "馬王10號",
+          "draw": 10,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 11,
+          "name": "馬王11號",
+          "draw": 11,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 12,
+          "name": "馬王12號",
+          "draw": 12,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        }
+      ]
+    },
+    {
+      "race_no": 7,
+      "venue": "ST",
+      "distance": 1200,
+      "class": "3",
+      "track": "好地",
+      "horses": [
+        {
+          "no": 1,
+          "name": "馬王1號",
+          "draw": 1,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 2,
+          "name": "馬王2號",
+          "draw": 2,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 3,
+          "name": "馬王3號",
+          "draw": 3,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 4,
+          "name": "馬王4號",
+          "draw": 4,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 5,
+          "name": "馬王5號",
+          "draw": 5,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            15.0,
+            9.5,
+            6.5
+          ],
+          "fund": 85,
+          "total": 88,
+          "d5_display": {
+            "t1": {
+              "value": 15.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 9.5,
+              "diff": 36.666666666666664
+            },
+            "t3": {
+              "value": 6.5,
+              "diff": 31.57894736842105
+            },
+            "t3_vs_t1": {
+              "value": 6.5,
+              "diff": 56.666666666666664,
+              "is_smart": true
+            }
+          },
+          "tags": [
+            "🔥Smart",
+            "💎Value"
+          ]
+        },
+        {
+          "no": 6,
+          "name": "馬王6號",
+          "draw": 6,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 7,
+          "name": "馬王7號",
+          "draw": 7,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 8,
+          "name": "馬王8號",
+          "draw": 8,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 9,
+          "name": "馬王9號",
+          "draw": 9,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 10,
+          "name": "馬王10號",
+          "draw": 10,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 11,
+          "name": "馬王11號",
+          "draw": 11,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 12,
+          "name": "馬王12號",
+          "draw": 12,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        }
+      ]
+    },
+    {
+      "race_no": 8,
+      "venue": "ST",
+      "distance": 1200,
+      "class": "3",
+      "track": "好地",
+      "horses": [
+        {
+          "no": 1,
+          "name": "馬王1號",
+          "draw": 1,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 2,
+          "name": "馬王2號",
+          "draw": 2,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 3,
+          "name": "馬王3號",
+          "draw": 3,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 4,
+          "name": "馬王4號",
+          "draw": 4,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 5,
+          "name": "馬王5號",
+          "draw": 5,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            15.0,
+            9.5,
+            6.5
+          ],
+          "fund": 85,
+          "total": 88,
+          "d5_display": {
+            "t1": {
+              "value": 15.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 9.5,
+              "diff": 36.666666666666664
+            },
+            "t3": {
+              "value": 6.5,
+              "diff": 31.57894736842105
+            },
+            "t3_vs_t1": {
+              "value": 6.5,
+              "diff": 56.666666666666664,
+              "is_smart": true
+            }
+          },
+          "tags": [
+            "🔥Smart",
+            "💎Value"
+          ]
+        },
+        {
+          "no": 6,
+          "name": "馬王6號",
+          "draw": 6,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 7,
+          "name": "馬王7號",
+          "draw": 7,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 8,
+          "name": "馬王8號",
+          "draw": 8,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 9,
+          "name": "馬王9號",
+          "draw": 9,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 10,
+          "name": "馬王10號",
+          "draw": 10,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 11,
+          "name": "馬王11號",
+          "draw": 11,
+          "jockey": "田泰安",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        },
+        {
+          "no": 12,
+          "name": "馬王12號",
+          "draw": 12,
+          "jockey": "潘頓",
+          "trainer": "沈集成",
+          "age": 4,
+          "weight": 1150,
+          "gear": "--",
+          "last6": "1-2-3",
+          "win_odds": [
+            12.0,
+            12.0,
+            12.0
+          ],
+          "fund": 70,
+          "total": 65,
+          "d5_display": {
+            "t1": {
+              "value": 12.0,
+              "diff": 0
+            },
+            "t2": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3": {
+              "value": 12.0,
+              "diff": 0.0
+            },
+            "t3_vs_t1": {
+              "value": 12.0,
+              "diff": 0.0,
+              "is_smart": false
+            }
+          },
+          "tags": []
+        }
+      ]
     }
-  ],
-  "recommendations": {
-    "solid": {
-      "title": "🟢 最合理",
-      "horses": [
-        5
-      ],
-      "detail": [
-        "5號 基本面77分 T3vsT1 -56.7%"
-      ]
-    },
-    "heavy": {
-      "title": "🔴 重票之選",
-      "horses": [
-        5,
-        8,
-        3
-      ],
-      "detail": [
-        "5號 T3vsT1 -56.7% 2個彩池掃貨",
-        "8號 T3vsT1 -50.0% 2個彩池掃貨",
-        "3號 T3vsT1 -20.0% 0個彩池掃貨"
-      ]
-    },
-    "outsiders": {
-      "title": "⚡️ 爆冷",
-      "horses": [
-        8
-      ],
-      "detail": [
-        "8號 14.0倍 T3急瀉36.4%"
-      ]
-    }
-  }
+  ]
 }
