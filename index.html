@@ -13,3 +13,30 @@ function selectRace(i){cur=i;renderTabs();var rc=RACES[i];document.getElementByI
 async function loadReal(){try{var res=await fetch('data.json?v='+Date.now());if(!res.ok)throw 'no json';var data=await res.json();if(data.races && data.races.length>0){RACES=normalize(data.races);document.getElementById('status').innerText='✅ Moonbus choice V9.1 | 真實賠率 - '+data.updated+' | 共'+RACES.length+'場';}else{throw 'empty'}}catch(e){document.getElementById('status').innerText='✅ Moonbus choice V9.1 | 示範模式 (賽日自動轉真實) | 共'+RACES.length+'場';}renderTabs();selectRace(0);}
 loadReal();
 </script></body></html>
+
+<script>
+// V9.2 金檔資料庫 - 根據你13場+馬會近2季統計
+const drawBias = {
+  "沙田 1000": { "12":15, "13":15, "14":14, "1":5, "2":6 },
+  "沙田 1200": { "9":13, "10":13.5, "11":13, "12":12, "1":8 },
+  "沙田 1400": { "10":14.2, "11":13.8, "9":13, "1":9 },
+  "沙田 1600": { "1":14, "2":13, "10":12.5, "3":12 },
+  "跑馬地 1200": { "1":15, "2":14, "3":11, "12":6 },
+  "跑馬地 1650": { "1":21, "2":19, "3":18, "4":12, "10":7 }
+};
+
+function getDrawRate(track, dist, draw){
+  const key = `${track} ${dist}`;
+  const table = drawBias[key] || {};
+  const rate = table[String(draw)] || 8;
+  return { rate, isGold: rate >= 12, isDead: rate <= 6 };
+}
+
+// 顯示嗰陣
+function renderHorse(h, track, dist){
+  const {rate, isGold, isDead} = getDrawRate(track, dist, h.draw);
+  const tag = isGold? `🏆金檔${rate}%` : isDead? `💀死檔${rate}%` : `檔${rate}%`;
+  const isGoldCold = h.odds >= 30 && isGold && h.drop > 25;
+  return `${h.no}號 ${h.name} ${h.draw}檔 ${tag} ${h.t1}→${h.t3}倍 ${isGoldCold?'💎金檔冷馬':''}`;
+}
+</script>
