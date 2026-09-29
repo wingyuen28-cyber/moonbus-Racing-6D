@@ -1,6 +1,88 @@
 {
-  "updated": "2026-09-29 11:36:34",
-  "version": "V9.7 Clean 09-29 11:36",
+  "updated": "2026-09-29 11:42:45",
+  "version": "V9.8 鎖死版 09-29 11:42",
   "isEarlyBird": true,
-  "races": []
+  "races": [
+    {
+      "race_no": 1,
+      "venue": "沙田",
+      "distance": 1200,
+      "class": "4班",
+      "track": "好地",
+      "horses": [
+        {
+          "no": 1,
+          "name": "晨曦儷人",
+          "draw": 2,
+          "jockey": "潘頓",
+          "trainer": "希斯",
+          "fund": 70,
+          "total": 45.2,
+          "grade": "B",
+          "win_odds": 10,
+          "t1": 10,
+          "t2": 10,
+          "t3": 10,
+          "drop": 0,
+          "drawRate": 8,
+          "isGoldDraw": false,
+          "isGoldCold": false
+        },
+        {
+          "no": 2,
+          "name": "大眾開心",
+          "draw": 10,
+          "jockey": "艾道拿",
+          "trainer": "告東尼",
+          "fund": 70,
+          "total": 66.8,
+          "grade": "A",
+          "win_odds": 10,
+          "t1": 10,
+          "t2": 10,
+          "t3": 10,
+          "drop": 0,
+          "drawRate": 12,
+          "isGoldDraw": true,
+          "isGoldCold": false
+        },
+        {
+          "no": 3,
+          "name": "超強六十",
+          "draw": 1,
+          "jockey": "巴度",
+          "trainer": "呂健威",
+          "fund": 70,
+          "total": 46.0,
+          "grade": "B",
+          "win_odds": 10,
+          "t1": 10,
+          "t2": 10,
+          "t3": 10,
+          "drop": 0,
+          "drawRate": 10,
+          "isGoldDraw": false,
+          "isGoldCold": false
+        },
+        {
+          "no": 4,
+          "name": "幸運同行",
+          "draw": 7,
+          "jockey": "田泰安",
+          "trainer": "鄭俊偉",
+          "fund": 70,
+          "total": 45.2,
+          "grade": "B",
+          "win_odds": 10,
+          "t1": 10,
+          "t2": 10,
+          "t3": 10,
+          "drop": 0,
+          "drawRate": 8,
+          "isGoldDraw": false,
+          "isGoldCold": false
+        }
+      ]
+    }
+  ]
 }
