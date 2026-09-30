@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MoonBus V9.8.4 真落飛完整版</title>
+<title>MoonBus V9.8.5 真落飛完整版</title>
 <style>
 body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0a;color:#fff;margin:0;padding:10px}
 .header{display:flex;justify-content:space-between;align-items:center}
@@ -15,7 +15,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0a;
 </style>
 </head>
 <body>
-<div class="header"><h3>🌙 MoonBus V9.8.4 <span class="live-dot"></span> LIVE</h3><span id="status">連接緊馬會...</span></div>
+<div class="header"><h3>🌙 MoonBus V9.8.5 <span class="live-dot"></span> LIVE</h3><span id="status">連接緊馬會...</span></div>
 <div id="list">載入中...</div>
 
 <script>
@@ -27,32 +27,27 @@ let date = "2026-10-01";
 async function loadReal(){
   try{
     const r = await fetch(`${WORKER_URL}?race=${race}&date=${date}&t=${Date.now()}`);
-    const data = await r.json();
+    let txt = (await r.text()).trim();
+    // 容錯抽JSON：唔理前面有咩字，淨抽最外層 {...}
+    let m = txt.match(/\{[\s\S]*\}/);
+    if(!m) throw new Error("無數據: "+txt.slice(0,100));
+    let json = JSON.parse(m[0]);
 
     let runners = [];
-
-    // 1. 新GraphQL格式 (你而家2564 bytes嗰個)
-    if(data.data?.activeMeetings){
-        let meeting = data.data.activeMeetings[0];
-        let raceData = meeting.races?.find(x=>x.no==race) || meeting.races[0];
-        let winPool = raceData.pools?.find(p=>p.oddsType==="WIN");
+    // 新Worker 2564 bytes GraphQL格式
+    if(json.data?.activeMeetings){
+        let meeting = json.data.activeMeetings[0];
+        let raceData = meeting.races?.find(x=>x.no==race) || meeting.races?.[0];
+        let winPool = raceData?.pools?.find(p=>p.oddsType==="WIN");
         if(winPool) runners = winPool.oddsNodes.map(o=>({No:o.horseNo, WIN:o.odds, Name:""}));
-    }
-    // 2. 舊 getJSON OUT.WIN 格式
-    else if(data.OUT?.WIN){
-        runners = data.OUT.WIN.map(o=>({No:o.no, WIN:o.win, Name:""}));
-    }
-    // 3. 舊 Runners 格式 (V9.8.1原有)
-    else if(data.Runners){
-        runners = data.Runners;
-    }
-    // 4. 舊 runners 小寫
-    else if(data.runners){
-        runners = Object.values(data.runners).map(o=>({No:o.no, WIN:o.win}));
+    }else if(json.OUT?.WIN){ // 你原本V9.8.3諗住用嘅格式
+        runners = json.OUT.WIN.map(o=>({No:o.no, WIN:o.win, Name:o.name||""}));
+    }else if(json.Runners){ // V9.8.1原有格式
+        runners = json.Runners;
     }
 
     if(runners.length===0){
-        document.getElementById("status").innerText = `今日未開跑/數據格式: ${JSON.stringify(data).slice(0,80)}`;
+        document.getElementById("list").innerHTML = `<div style="padding:20px;color:#888">已連接馬會，等待開市...<br><small>${txt.slice(0,200)}</small></div>`;
         return;
     }
 
