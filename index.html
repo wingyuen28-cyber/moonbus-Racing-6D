@@ -5,72 +5,228 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MoonBus V9.8.5 真落飛完整版</title>
 <style>
-body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0a;color:#fff;margin:0;padding:10px}
-.header{display:flex;justify-content:space-between;align-items:center}
-.live-dot{width:8px;height:8px;background:#00ff88;border-radius:50%;display:inline-block;animation:blink 1s infinite}
-@keyframes blink{50%{opacity:0}}
-.odds-card{background:#1a1a1a;border-radius:12px;padding:12px;margin:8px 0;display:flex;justify-content:space-between}
-.drop{color:#00ff88;font-weight:bold}
-.rise{color:#ff4444}
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    margin: 0;
+    padding: 12px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #222;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    background: #00ff88;
+    border-radius: 50%;
+    display: inline-block;
+    animation: blink 1s infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  #status {
+    font-size: 12px;
+    color: #aaa;
+  }
+
+  /* 場次切換按鈕區塊 */
+  .race-selector {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .race-btn {
+    background: #222;
+    color: #ccc;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .race-btn.active {
+    background: #00ff88;
+    color: #000;
+    border-color: #00ff88;
+  }
+
+  /* 賠率卡片 */
+  .odds-card {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #333;
+  }
+
+  .horse-num {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .odds-val {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .drop { color: #00ff88; font-weight: bold; }
+  .rise { color: #ff4444; }
+  .badge {
+    font-size: 12px;
+    margin-left: 6px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: #222;
+  }
 </style>
 </head>
 <body>
-<div class="header"><h3>🌙 MoonBus V9.8.5 <span class="live-dot"></span> LIVE</h3><span id="status">連接緊馬會...</span></div>
+
+<div class="header">
+  <h3 class="title">🌙 MoonBus V9.8.5 <span class="live-dot"></span> LIVE</h3>
+  <span id="status">連接中...</span>
+</div>
+
+<!-- 場次按鈕 (R1 至 R11) -->
+<div class="race-selector" id="raceBtns"></div>
+
+<!-- 賠率清單 -->
 <div id="list">載入中...</div>
 
 <script>
 const WORKER_URL = "https://moonbus-odds.wingyuen28.workers.dev";
-let firstOdds = {};
-let race = 1;
-let date = "2026-10-01";
+let firstOdds = {}; // 紀錄每隻馬的初盤賠率
+let currentRace = 1;
+// 自動獲取今日日期 (格式：YYYY-MM-DD)
+let currentDate = new Date().toISOString().split('T')[0];
 
-async function loadReal(){
-  try{
-    const r = await fetch(`${WORKER_URL}?race=${race}&date=${date}&t=${Date.now()}`);
+// 1. 初始化渲染 R1 - R11 場次按鈕
+function initRaceButtons() {
+  const container = document.getElementById("raceBtns");
+  let html = "";
+  for (let i = 1; i <= 11; i++) {
+    html += `<button class="race-btn ${i === currentRace ? 'active' : ''}" onclick="changeRace(${i})">R${i}</button>`;
+  }
+  container.innerHTML = html;
+}
+
+// 2. 切換場次函數
+function changeRace(raceNum) {
+  if (currentRace === raceNum) return;
+  currentRace = raceNum;
+  firstOdds = {}; // 切換場次時清空紀錄的初盤賠率
+  
+  // 更新按鈕 active 樣式
+  const btns = document.querySelectorAll(".race-btn");
+  btns.forEach((btn, index) => {
+    btn.classList.toggle("active", (index + 1) === raceNum);
+  });
+
+  document.getElementById("list").innerHTML = `<div style="padding:20px;color:#888;text-align:center">載入第 ${raceNum} 場數據中...</div>`;
+  loadReal();
+}
+
+// 3. 核心數據載入函數
+async function loadReal() {
+  try {
+    const r = await fetch(`${WORKER_URL}?race=${currentRace}&date=${currentDate}&t=${Date.now()}`);
     let txt = (await r.text()).trim();
-    // 容錯抽JSON：唔理前面有咩字，淨抽最外層 {...}
+
+    // 容錯擷取 JSON 結構
     let m = txt.match(/\{[\s\S]*\}/);
-    if(!m) throw new Error("無數據: "+txt.slice(0,100));
+    if (!m) throw new Error("無效 JSON 數據: " + txt.slice(0, 80));
     let json = JSON.parse(m[0]);
 
     let runners = [];
-    // 新Worker 2564 bytes GraphQL格式
-    if(json.data?.activeMeetings){
-        let meeting = json.data.activeMeetings[0];
-        let raceData = meeting.races?.find(x=>x.no==race) || meeting.races?.[0];
-        let winPool = raceData?.pools?.find(p=>p.oddsType==="WIN");
-        if(winPool) runners = winPool.oddsNodes.map(o=>({No:o.horseNo, WIN:o.odds, Name:""}));
-    }else if(json.OUT?.WIN){ // 你原本V9.8.3諗住用嘅格式
-        runners = json.OUT.WIN.map(o=>({No:o.no, WIN:o.win, Name:o.name||""}));
-    }else if(json.Runners){ // V9.8.1原有格式
-        runners = json.Runners;
+
+    // 相容性解析不同後端格式
+    if (json.OUT?.WIN && json.OUT.WIN.length > 0) {
+      runners = json.OUT.WIN.map(o => ({ No: o.no, WIN: o.win, Name: o.name || '' }));
+    } else if (json.data?.activeMeetings || json.data?.raceMeeting) {
+      let pools = json.data?.raceMeeting?.race?.pools || json.data?.activeMeetings?.[0]?.races?.[0]?.pools || [];
+      let winPool = pools.find(p => p.oddsType === "WIN");
+      if (winPool) {
+        runners = winPool.oddsNodes.map(o => ({ No: parseInt(o.horseNo, 10), WIN: parseFloat(o.odds), Name: "" }));
+      }
+    } else if (json.Runners) {
+      runners = json.Runners;
     }
 
-    if(runners.length===0){
-        document.getElementById("list").innerHTML = `<div style="padding:20px;color:#888">已連接馬會，等待開市...<br><small>${txt.slice(0,200)}</small></div>`;
-        return;
+    // 若未開盤或無數據
+    if (!runners || runners.length === 0) {
+      document.getElementById("list").innerHTML = `
+        <div style="padding:30px 20px;color:#888;text-align:center">
+          第 ${currentRace} 場已連接馬會，等待開市/無數據<br>
+          <small style="font-size:10px;color:#555">${txt.slice(0, 100)}</small>
+        </div>`;
+      document.getElementById("status").innerText = `已連線 (無數據)`;
+      return;
     }
 
     let html = "";
-    runners.forEach(run=>{
+    runners.forEach(run => {
       let no = run.No || run.no;
       let win = parseFloat(run.WIN || run.win || run.odds);
-      if(!win) return;
-      if(!firstOdds[no]) firstOdds[no] = win;
+      if (!win) return;
+
+      // 紀錄第一次獲取到的賠率作為基準算落飛
+      if (!firstOdds[no]) firstOdds[no] = win;
+
       let change = ((win - firstOdds[no]) / firstOdds[no] * 100);
-      let cls = change < -10? "drop" : (change > 10? "rise" : "");
-      let label = change < -10? `落飛 ${change.toFixed(1)}%` : (change > 10? `↑ ${change.toFixed(1)}%` : `${change.toFixed(1)}%`);
-      html += `<div class="odds-card"><div>${no}號 ${run.Name||''}</div><div><b>${win}</b> <span class="${cls}">${label}</span></div></div>`;
+      let cls = change < -10 ? "drop" : (change > 10 ? "rise" : "");
+      let label = change < -10 ? `落飛 ${change.toFixed(1)}%` : (change > 10 ? `↑ ${change.toFixed(1)}%` : `${change.toFixed(1)}%`);
+
+      html += `
+        <div class="odds-card">
+          <div class="horse-num">${no}號 ${run.Name || ''}</div>
+          <div>
+            <span class="odds-val">${win.toFixed(1)}</span>
+            <span class="badge ${cls}">${label}</span>
+          </div>
+        </div>`;
     });
+
     document.getElementById("list").innerHTML = html;
-    document.getElementById("status").innerText = `真數據 ${new Date().toLocaleTimeString()} | ${Object.keys(firstOdds).length}駒`;
-  }catch(e){
-    document.getElementById("status").innerText = "Error: "+e.message;
+    document.getElementById("status").innerText = `R${currentRace} 真數據 ${new Date().toLocaleTimeString()} | ${runners.length}駒`;
+
+  } catch (e) {
+    document.getElementById("status").innerText = "連線異常: " + e.message;
     console.error(e);
   }
 }
+
+// 頁面初次載入執行
+initRaceButtons();
 loadReal();
+
+// 每 15 秒自動刷新賠率
 setInterval(loadReal, 15000);
 </script>
+
 </body>
 </html>
