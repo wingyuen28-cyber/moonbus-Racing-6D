@@ -173,7 +173,8 @@
 <div id="list">載入中...</div>
 
 <script>
-const WORKER_URL = "https://script.google.com/macros/s/AKfycbw4Sp5N58Rb5S7A68UTDd8waYvEe8MPuXrI3Qh9jR44W1YQ5nfActLvECgyRi6ZyamY/exec";
+// 已綁定您的 Google Apps Script 中轉站網址
+const WORKER_URL = "https://script.google.com/macros/s/AKfycbwxZxpykue3nhBLVnKPfpPNaUnREgJ7ApzW5N2t6e5TqOKH88zEPgqzyUUW--JCvxwE/exec";
 let firstOdds = { win: {}, pla: {}, qin: {}, qpl: {} }; // 儲存初盤基準
 let currentRace = 1;
 let currentDate = new Date().toISOString().split('T')[0];
@@ -207,133 +208,42 @@ function resetBaseline() {
   alert(`已將第 ${currentRace} 場現時賠率重置為最新監測基準！`);
 }
 
-// 智慧多通道抓取邏輯 (Vercel 主通道 -> 前端代理備用)
-async function fetchOddsData(raceNo, dateStr) {
-  // 1. 嘗試 Vercel 主通道
-  try {
-    const vercelRes = await fetch(`${WORKER_URL}?race=${raceNo}&date=${dateStr}&t=${Date.now()}`);
-    if (vercelRes.ok) {
-      const text = await vercelRes.text();
-      const m = text.match(/\{[\s\S]*\}/);
-      if (m) {
-        const json = JSON.parse(m[0]);
-        if (json && !json.error && (json.data || json.OUT)) {
-          return { data: json, source: "Vercel 主通道" };
-        }
-      }
-    }
-  } catch (e) {
-    console.warn("Vercel 主通道異常，啟動備用通道:", e);
-  }
-
-  // 2. 備用通道 A：corsproxy.io 代理直連馬會 GraphQL (測試 ST 沙田 與 HV 跑馬地)
-  const venues = ["ST", "HV"];
-  for (const venue of venues) {
-    try {
-      const payload = {
-        operationName: "getRaceOdds",
-        variables: {
-          date: dateStr,
-          venue: venue,
-          raceNo: raceNo,
-          oddsTypes: ["WIN", "PLA", "QIN", "QPL"]
-        },
-        query: `query getRaceOdds($date: String, $venue: String, $raceNo: Int, $oddsTypes: [OddsType]) {
-          raceMeeting(date: $date, venue: $venue) {
-            race(raceNo: $raceNo) {
-              raceNo
-              pools(oddsTypes: $oddsTypes) {
-                oddsType
-                oddsNodes { combi horseNo odds status }
-              }
-            }
-          }
-        }`
-      };
-
-      const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent("https://bet.hkjc.com/racing/api/graphql");
-      const res = await fetch(proxyUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-
-      if (res.ok) {
-        const json = await res.json();
-        if (json && json.data && json.data.raceMeeting && json.data.raceMeeting.race) {
-          return { data: json, source: `備用代理 (${venue})` };
-        }
-      }
-    } catch (e) {
-      console.warn(`備用通道 (${venue}) 失敗:`, e);
-    }
-  }
-
-  // 3. 備用通道 B：allorigins 代理
-  for (const venue of venues) {
-    try {
-      const payload = {
-        operationName: "getRaceOdds",
-        variables: { date: dateStr, venue: venue, raceNo: raceNo, oddsTypes: ["WIN", "PLA", "QIN", "QPL"] },
-        query: `query getRaceOdds($date: String, $venue: String, $raceNo: Int, $oddsTypes: [OddsType]) { raceMeeting(date: $date, venue: $venue) { race(raceNo: $raceNo) { raceNo pools(oddsTypes: $oddsTypes) { oddsType oddsNodes { combi horseNo odds status } } } } }`
-      };
-
-      const res = await fetch("https://api.allorigins.win/raw?url=" + encodeURIComponent("https://bet.hkjc.com/racing/api/graphql"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-
-      if (res.ok) {
-        const json = await res.json();
-        if (json && json.data && json.data.raceMeeting && json.data.raceMeeting.race) {
-          return { data: json, source: `備用網絡 (${venue})` };
-        }
-      }
-    } catch (e) {
-      console.warn(`備用網絡 (${venue}) 失敗:`, e);
-    }
-  }
-
-  throw new Error("馬會未開盤或連線被阻擋");
-}
-
+// 直接呼叫 Google Apps Script 中轉站
 async function loadReal() {
   try {
     document.getElementById("status").innerText = `正在更新 R${currentRace} 數據...`;
 
-    const result = await fetchOddsData(currentRace, currentDate);
-    const json = result.data;
-    const sourceName = result.source;
+    const res = await fetch(`${WORKER_URL}?race=${currentRace}&date=${currentDate}&t=${Date.now()}`);
+    if (!res.ok) throw new Error(`HTTP 狀態碼: ${res.status}`);
+    
+    const json = await res.json();
+    if (json.error) throw new Error(json.error);
 
     let runnersMap = {};
     let comboDrops = []; // 紀錄 QIN / QPL 異動組合
 
+    // 相容性處理：同時支援傳統 JSON (OUT) 與 GraphQL JSON (data) 格式
     let pools = json.data?.raceMeeting?.race?.pools || json.data?.activeMeetings?.[0]?.races?.[0]?.pools || [];
     let winPool = pools.find(p => p.oddsType === "WIN");
     let plaPool = pools.find(p => p.oddsType === "PLA");
     let qinPool = pools.find(p => p.oddsType === "QIN") || json.OUT?.QIN;
-    let qplPool = pools.find(p => p.oddsType === "QPL");
+    let qplPool = pools.find(p => p.oddsType === "QPL") || json.OUT?.QPL;
 
-    // 1. 解析 WIN
-    if (winPool) {
+    // 1. 解析 WIN (獨贏)
+    if (winPool?.oddsNodes) {
       winPool.oddsNodes.forEach(o => {
         let no = parseInt(o.horseNo, 10);
-        if (!isNaN(no)) {
-          runnersMap[no] = { no: no, win: parseFloat(o.odds) || 0, pla: 0 };
-        }
+        if (!isNaN(no)) runnersMap[no] = { no: no, win: parseFloat(o.odds) || 0, pla: 0 };
       });
     } else if (json.OUT?.WIN) {
       json.OUT.WIN.forEach(o => {
-        let no = parseInt(o.no, 10);
-        if (!isNaN(no)) {
-          runnersMap[no] = { no: no, win: parseFloat(o.win) || 0, pla: 0 };
-        }
+        let no = parseInt(o.no || o.horseNo, 10);
+        if (!isNaN(no)) runnersMap[no] = { no: no, win: parseFloat(o.win || o.odds) || 0, pla: 0 };
       });
     }
 
-    // 2. 解析 PLA
-    if (plaPool) {
+    // 2. 解析 PLA (位置)
+    if (plaPool?.oddsNodes) {
       plaPool.oddsNodes.forEach(o => {
         let no = parseInt(o.horseNo, 10);
         if (!isNaN(no)) {
@@ -341,42 +251,49 @@ async function loadReal() {
           runnersMap[no].pla = parseFloat(o.odds) || 0;
         }
       });
+    } else if (json.OUT?.PLA) {
+      json.OUT.PLA.forEach(o => {
+        let no = parseInt(o.no || o.horseNo, 10);
+        if (!isNaN(no)) {
+          if (!runnersMap[no]) runnersMap[no] = { no: no, win: 0, pla: 0 };
+          runnersMap[no].pla = parseFloat(o.pla || o.odds) || 0;
+        }
+      });
     }
 
     // 3. 解析 QIN (連贏) 落飛
     let qinNodes = qinPool?.oddsNodes || (Array.isArray(qinPool) ? qinPool : []);
     qinNodes.forEach(o => {
-      let combi = o.combi; // 例: "1-2"
+      let combi = o.combi;
       let odds = parseFloat(o.odds || o.win);
       if (!combi || !odds) return;
 
       if (!firstOdds.qin[combi]) firstOdds.qin[combi] = odds;
       let change = ((odds - firstOdds.qin[combi]) / firstOdds.qin[combi] * 100);
 
-      if (change <= -5) { // 跌幅達 5% 或以上納入監測
+      if (change <= -5) {
         comboDrops.push({ type: 'QIN 連贏', combi: combi, odds: odds, change: change });
       }
     });
 
     // 4. 解析 QPL (位置連贏) 落飛
-    if (qplPool?.oddsNodes) {
-      qplPool.oddsNodes.forEach(o => {
-        let combi = o.combi;
-        let odds = parseFloat(o.odds);
-        if (!combi || !odds) return;
+    let qplNodes = qplPool?.oddsNodes || (Array.isArray(qplPool) ? qplPool : []);
+    qplNodes.forEach(o => {
+      let combi = o.combi;
+      let odds = parseFloat(o.odds || o.win);
+      if (!combi || !odds) return;
 
-        if (!firstOdds.qpl[combi]) firstOdds.qpl[combi] = odds;
-        let change = ((odds - firstOdds.qpl[combi]) / firstOdds.qpl[combi] * 100);
+      if (!firstOdds.qpl[combi]) firstOdds.qpl[combi] = odds;
+      let change = ((odds - firstOdds.qpl[combi]) / firstOdds.qpl[combi] * 100);
 
-        if (change <= -5) {
-          comboDrops.push({ type: 'QPL 位置Q', combi: combi, odds: odds, change: change });
-        }
-      });
-    }
+      if (change <= -5) {
+        comboDrops.push({ type: 'QPL 位置Q', combi: combi, odds: odds, change: change });
+      }
+    });
 
     // 渲染 QIN/QPL 大單急跌卡片 (顯示 Top 6 跌得最猛烈的組合)
     if (comboDrops.length > 0) {
-      comboDrops.sort((a, b) => a.change - b.change); // 跌最多排最前
+      comboDrops.sort((a, b) => a.change - b.change);
       let top6 = comboDrops.slice(0, 6);
       let comboHtml = "";
       top6.forEach(c => {
@@ -400,10 +317,9 @@ async function loadReal() {
     if (runnerList.length === 0) {
       document.getElementById("list").innerHTML = `
         <div style="padding:30px 20px;color:#888;text-align:center">
-          第 ${currentRace} 場未開市或無數據<br>
-          <small style="font-size:10px;color:#555">資料來源：${sourceName}</small>
+          第 ${currentRace} 場未開市或暫無賠率數據
         </div>`;
-      document.getElementById("status").innerText = `狀態: 已連線 [${sourceName}] (暫無賠率或未開市)`;
+      document.getElementById("status").innerText = `狀態: 已連線 [Google中轉站] (第 ${currentRace} 場未開市)`;
       return;
     }
 
@@ -443,7 +359,7 @@ async function loadReal() {
     });
 
     document.getElementById("list").innerHTML = html;
-    document.getElementById("status").innerText = `R${currentRace} 真數據 ${new Date().toLocaleTimeString()} [${sourceName}] | ${runnerList.length} 駒`;
+    document.getElementById("status").innerText = `R${currentRace} 真數據 ${new Date().toLocaleTimeString()} [Google中轉站] | ${runnerList.length} 駒`;
 
   } catch (e) {
     document.getElementById("status").innerText = "連線狀態: " + e.message;
