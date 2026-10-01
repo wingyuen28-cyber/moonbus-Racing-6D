@@ -207,14 +207,104 @@ function resetBaseline() {
   alert(`已將第 ${currentRace} 場現時賠率重置為最新監測基準！`);
 }
 
+// 智慧多通道抓取邏輯 (Vercel 主通道 -> 前端代理備用)
+async function fetchOddsData(raceNo, dateStr) {
+  // 1. 嘗試 Vercel 主通道
+  try {
+    const vercelRes = await fetch(`${WORKER_URL}?race=${raceNo}&date=${dateStr}&t=${Date.now()}`);
+    if (vercelRes.ok) {
+      const text = await vercelRes.text();
+      const m = text.match(/\{[\s\S]*\}/);
+      if (m) {
+        const json = JSON.parse(m[0]);
+        if (json && !json.error && (json.data || json.OUT)) {
+          return { data: json, source: "Vercel 主通道" };
+        }
+      }
+    }
+  } catch (e) {
+    console.warn("Vercel 主通道異常，啟動備用通道:", e);
+  }
+
+  // 2. 備用通道 A：corsproxy.io 代理直連馬會 GraphQL (測試 ST 沙田 與 HV 跑馬地)
+  const venues = ["ST", "HV"];
+  for (const venue of venues) {
+    try {
+      const payload = {
+        operationName: "getRaceOdds",
+        variables: {
+          date: dateStr,
+          venue: venue,
+          raceNo: raceNo,
+          oddsTypes: ["WIN", "PLA", "QIN", "QPL"]
+        },
+        query: `query getRaceOdds($date: String, $venue: String, $raceNo: Int, $oddsTypes: [OddsType]) {
+          raceMeeting(date: $date, venue: $venue) {
+            race(raceNo: $raceNo) {
+              raceNo
+              pools(oddsTypes: $oddsTypes) {
+                oddsType
+                oddsNodes { combi horseNo odds status }
+              }
+            }
+          }
+        }`
+      };
+
+      const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent("https://bet.hkjc.com/racing/api/graphql");
+      const res = await fetch(proxyUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        const json = await res.json();
+        if (json && json.data && json.data.raceMeeting && json.data.raceMeeting.race) {
+          return { data: json, source: `備用代理 (${venue})` };
+        }
+      }
+    } catch (e) {
+      console.warn(`備用通道 (${venue}) 失敗:`, e);
+    }
+  }
+
+  // 3. 備用通道 B：allorigins 代理
+  for (const venue of venues) {
+    try {
+      const payload = {
+        operationName: "getRaceOdds",
+        variables: { date: dateStr, venue: venue, raceNo: raceNo, oddsTypes: ["WIN", "PLA", "QIN", "QPL"] },
+        query: `query getRaceOdds($date: String, $venue: String, $raceNo: Int, $oddsTypes: [OddsType]) { raceMeeting(date: $date, venue: $venue) { race(raceNo: $raceNo) { raceNo pools(oddsTypes: $oddsTypes) { oddsType oddsNodes { combi horseNo odds status } } } } }`
+      };
+
+      const res = await fetch("https://api.allorigins.win/raw?url=" + encodeURIComponent("https://bet.hkjc.com/racing/api/graphql"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        const json = await res.json();
+        if (json && json.data && json.data.raceMeeting && json.data.raceMeeting.race) {
+          return { data: json, source: `備用網絡 (${venue})` };
+        }
+      }
+    } catch (e) {
+      console.warn(`備用網絡 (${venue}) 失敗:`, e);
+    }
+  }
+
+  throw new Error("馬會未開盤或連線被阻擋");
+}
+
 async function loadReal() {
   try {
-    const r = await fetch(`${WORKER_URL}?race=${currentRace}&date=${currentDate}&t=${Date.now()}`);
-    let txt = (await r.text()).trim();
+    document.getElementById("status").innerText = `正在更新 R${currentRace} 數據...`;
 
-    let m = txt.match(/\{[\s\S]*\}/);
-    if (!m) throw new Error("回應格式非 JSON");
-    let json = JSON.parse(m[0]);
+    const result = await fetchOddsData(currentRace, currentDate);
+    const json = result.data;
+    const sourceName = result.source;
 
     let runnersMap = {};
     let comboDrops = []; // 紀錄 QIN / QPL 異動組合
@@ -229,12 +319,16 @@ async function loadReal() {
     if (winPool) {
       winPool.oddsNodes.forEach(o => {
         let no = parseInt(o.horseNo, 10);
-        runnersMap[no] = { no: no, win: parseFloat(o.odds), pla: 0 };
+        if (!isNaN(no)) {
+          runnersMap[no] = { no: no, win: parseFloat(o.odds) || 0, pla: 0 };
+        }
       });
     } else if (json.OUT?.WIN) {
       json.OUT.WIN.forEach(o => {
         let no = parseInt(o.no, 10);
-        runnersMap[no] = { no: no, win: parseFloat(o.win), pla: 0 };
+        if (!isNaN(no)) {
+          runnersMap[no] = { no: no, win: parseFloat(o.win) || 0, pla: 0 };
+        }
       });
     }
 
@@ -242,8 +336,10 @@ async function loadReal() {
     if (plaPool) {
       plaPool.oddsNodes.forEach(o => {
         let no = parseInt(o.horseNo, 10);
-        if (!runnersMap[no]) runnersMap[no] = { no: no, win: 0, pla: 0 };
-        runnersMap[no].pla = parseFloat(o.odds);
+        if (!isNaN(no)) {
+          if (!runnersMap[no]) runnersMap[no] = { no: no, win: 0, pla: 0 };
+          runnersMap[no].pla = parseFloat(o.odds) || 0;
+        }
       });
     }
 
@@ -305,9 +401,9 @@ async function loadReal() {
       document.getElementById("list").innerHTML = `
         <div style="padding:30px 20px;color:#888;text-align:center">
           第 ${currentRace} 場未開市或無數據<br>
-          <small style="font-size:10px;color:#555">${txt.slice(0, 80)}</small>
+          <small style="font-size:10px;color:#555">資料來源：${sourceName}</small>
         </div>`;
-      document.getElementById("status").innerText = `狀態: 已連線 (無數據)`;
+      document.getElementById("status").innerText = `狀態: 已連線 [${sourceName}] (暫無賠率或未開市)`;
       return;
     }
 
@@ -347,10 +443,15 @@ async function loadReal() {
     });
 
     document.getElementById("list").innerHTML = html;
-    document.getElementById("status").innerText = `R${currentRace} 真數據 ${new Date().toLocaleTimeString()} | ${runnerList.length} 駒`;
+    document.getElementById("status").innerText = `R${currentRace} 真數據 ${new Date().toLocaleTimeString()} [${sourceName}] | ${runnerList.length} 駒`;
 
   } catch (e) {
-    document.getElementById("status").innerText = "連線異常: " + e.message;
+    document.getElementById("status").innerText = "連線狀態: " + e.message;
+    document.getElementById("list").innerHTML = `
+      <div style="padding:30px 20px;color:#ff6666;text-align:center">
+        第 ${currentRace} 場暫無法取得數據<br>
+        <small style="font-size:11px;color:#888">${e.message}</small>
+      </div>`;
     console.error(e);
   }
 }
