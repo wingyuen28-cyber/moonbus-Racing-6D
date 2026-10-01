@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MoonBus V9.8.5 真落飛完整版</title>
+<title>MoonBus V9.8.5 真落飛完整版 (連贏大單監測)</title>
 <style>
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -23,9 +23,12 @@
   }
   
   .title {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
     margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
   .live-dot {
@@ -38,31 +41,44 @@
   }
   @keyframes blink { 50% { opacity: 0; } }
 
-  #status {
+  .reset-btn {
+    background: #222;
+    color: #00ff88;
+    border: 1px solid #00ff88;
+    border-radius: 6px;
+    padding: 4px 10px;
     font-size: 12px;
-    color: #aaa;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .reset-btn:active { background: #00ff88; color: #000; }
+
+  #status {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 8px;
+    display: block;
   }
 
-  /* 場次切換按鈕區塊 */
+  /* 場次選擇器 */
   .race-selector {
     display: flex;
     gap: 6px;
     overflow-x: auto;
     padding-bottom: 8px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     -webkit-overflow-scrolling: touch;
   }
 
   .race-btn {
-    background: #222;
+    background: #1e1e1e;
     color: #ccc;
-    border: 1px solid #444;
+    border: 1px solid #333;
     border-radius: 6px;
     padding: 6px 12px;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    white-space: nowrap;
     flex-shrink: 0;
   }
 
@@ -72,60 +88,96 @@
     border-color: #00ff88;
   }
 
-  /* 賠率卡片 */
+  /* 大單/異動監測區塊 */
+  .alert-section {
+    background: #141f18;
+    border: 1px solid #00ff8833;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 12px;
+  }
+  .alert-title {
+    font-size: 12px;
+    color: #00ff88;
+    font-weight: bold;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .combo-grid {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(100px, 1fr) );
+    gap: 6px;
+  }
+  .combo-card {
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 6px;
+    padding: 6px 8px;
+    text-align: center;
+  }
+  .combo-name { font-size: 13px; font-weight: bold; color: #fff; }
+  .combo-odds { font-size: 14px; font-weight: bold; color: #00ff88; }
+  .combo-drop { font-size: 10px; color: #00ff88; }
+
+  /* 賠率卡片 (WIN & PLA) */
+  .section-title {
+    font-size: 13px;
+    color: #aaa;
+    margin: 8px 0 4px 2px;
+    font-weight: bold;
+  }
   .odds-card {
-    background: #1a1a1a;
-    border-radius: 10px;
-    padding: 12px 16px;
-    margin: 8px 0;
+    background: #161616;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin: 6px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-left: 4px solid #333;
+    border-left: 3px solid #333;
   }
+  .horse-info { font-size: 15px; font-weight: bold; width: 30%; }
+  .odds-group { display: flex; gap: 12px; align-items: center; text-align: right; }
+  .odds-box { display: flex; flex-direction: column; align-items: flex-end; min-width: 60px; }
+  .type-label { font-size: 10px; color: #777; }
+  .odds-val { font-size: 16px; font-weight: bold; }
 
-  .horse-num {
-    font-size: 16px;
-    font-weight: bold;
-  }
-
-  .odds-val {
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-  .drop { color: #00ff88; font-weight: bold; }
+  .drop { color: #00ff88; }
   .rise { color: #ff4444; }
-  .badge {
-    font-size: 12px;
-    margin-left: 6px;
-    padding: 2px 6px;
-    border-radius: 4px;
-    background: #222;
-  }
+  .badge { font-size: 10px; padding: 1px 4px; border-radius: 3px; background: #222; }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h3 class="title">🌙 MoonBus V9.8.5 <span class="live-dot"></span> LIVE</h3>
-  <span id="status">連接中...</span>
+  <div class="title">
+    🌙 MoonBus LIVE <span class="live-dot"></span>
+  </div>
+  <button class="reset-btn" onclick="resetBaseline()">重置基準</button>
 </div>
 
-<!-- 場次按鈕 (R1 至 R11) -->
 <div class="race-selector" id="raceBtns"></div>
+<span id="status">連接中...</span>
 
-<!-- 賠率清單 -->
+<!-- 連贏 / 位置連贏 大單異動卡片區 -->
+<div class="alert-section" id="alertSection" style="display:none;">
+  <div class="alert-title">
+    <span>🔥 QIN / QPL 急劇落飛大單組合</span>
+    <span style="font-size:10px;color:#888;">TOP 6 異動</span>
+  </div>
+  <div class="combo-grid" id="comboGrid"></div>
+</div>
+
+<div class="section-title">獨贏 (WIN) & 位置 (PLA)</div>
 <div id="list">載入中...</div>
 
 <script>
 const WORKER_URL = "https://moonbus-odds.wingyuen28.workers.dev";
-let firstOdds = {}; // 紀錄每隻馬的初盤賠率
+let firstOdds = { win: {}, pla: {}, qin: {}, qpl: {} }; // 儲存初盤基準
 let currentRace = 1;
-// 自動獲取今日日期 (格式：YYYY-MM-DD)
 let currentDate = new Date().toISOString().split('T')[0];
 
-// 1. 初始化渲染 R1 - R11 場次按鈕
 function initRaceButtons() {
   const container = document.getElementById("raceBtns");
   let html = "";
@@ -135,84 +187,167 @@ function initRaceButtons() {
   container.innerHTML = html;
 }
 
-// 2. 切換場次函數
 function changeRace(raceNum) {
   if (currentRace === raceNum) return;
   currentRace = raceNum;
-  firstOdds = {}; // 切換場次時清空紀錄的初盤賠率
+  firstOdds = { win: {}, pla: {}, qin: {}, qpl: {} }; // 重置基準
   
-  // 更新按鈕 active 樣式
-  const btns = document.querySelectorAll(".race-btn");
-  btns.forEach((btn, index) => {
-    btn.classList.toggle("active", (index + 1) === raceNum);
+  document.querySelectorAll(".race-btn").forEach((btn, idx) => {
+    btn.classList.toggle("active", (idx + 1) === raceNum);
   });
 
+  document.getElementById("alertSection").style.display = "none";
   document.getElementById("list").innerHTML = `<div style="padding:20px;color:#888;text-align:center">載入第 ${raceNum} 場數據中...</div>`;
   loadReal();
 }
 
-// 3. 核心數據載入函數
+function resetBaseline() {
+  firstOdds = { win: {}, pla: {}, qin: {}, qpl: {} };
+  loadReal();
+  alert(`已將第 ${currentRace} 場現時賠率重置為最新監測基準！`);
+}
+
 async function loadReal() {
   try {
     const r = await fetch(`${WORKER_URL}?race=${currentRace}&date=${currentDate}&t=${Date.now()}`);
     let txt = (await r.text()).trim();
 
-    // 容錯擷取 JSON 結構
     let m = txt.match(/\{[\s\S]*\}/);
-    if (!m) throw new Error("無效 JSON 數據: " + txt.slice(0, 80));
+    if (!m) throw new Error("回應格式非 JSON");
     let json = JSON.parse(m[0]);
 
-    let runners = [];
+    let runnersMap = {};
+    let comboDrops = []; // 紀錄 QIN / QPL 異動組合
 
-    // 相容性解析不同後端格式
-    if (json.OUT?.WIN && json.OUT.WIN.length > 0) {
-      runners = json.OUT.WIN.map(o => ({ No: o.no, WIN: o.win, Name: o.name || '' }));
-    } else if (json.data?.activeMeetings || json.data?.raceMeeting) {
-      let pools = json.data?.raceMeeting?.race?.pools || json.data?.activeMeetings?.[0]?.races?.[0]?.pools || [];
-      let winPool = pools.find(p => p.oddsType === "WIN");
-      if (winPool) {
-        runners = winPool.oddsNodes.map(o => ({ No: parseInt(o.horseNo, 10), WIN: parseFloat(o.odds), Name: "" }));
-      }
-    } else if (json.Runners) {
-      runners = json.Runners;
+    let pools = json.data?.raceMeeting?.race?.pools || json.data?.activeMeetings?.[0]?.races?.[0]?.pools || [];
+    let winPool = pools.find(p => p.oddsType === "WIN");
+    let plaPool = pools.find(p => p.oddsType === "PLA");
+    let qinPool = pools.find(p => p.oddsType === "QIN") || json.OUT?.QIN;
+    let qplPool = pools.find(p => p.oddsType === "QPL");
+
+    // 1. 解析 WIN
+    if (winPool) {
+      winPool.oddsNodes.forEach(o => {
+        let no = parseInt(o.horseNo, 10);
+        runnersMap[no] = { no: no, win: parseFloat(o.odds), pla: 0 };
+      });
+    } else if (json.OUT?.WIN) {
+      json.OUT.WIN.forEach(o => {
+        let no = parseInt(o.no, 10);
+        runnersMap[no] = { no: no, win: parseFloat(o.win), pla: 0 };
+      });
     }
 
-    // 若未開盤或無數據
-    if (!runners || runners.length === 0) {
+    // 2. 解析 PLA
+    if (plaPool) {
+      plaPool.oddsNodes.forEach(o => {
+        let no = parseInt(o.horseNo, 10);
+        if (!runnersMap[no]) runnersMap[no] = { no: no, win: 0, pla: 0 };
+        runnersMap[no].pla = parseFloat(o.odds);
+      });
+    }
+
+    // 3. 解析 QIN (連贏) 落飛
+    let qinNodes = qinPool?.oddsNodes || (Array.isArray(qinPool) ? qinPool : []);
+    qinNodes.forEach(o => {
+      let combi = o.combi; // 例: "1-2"
+      let odds = parseFloat(o.odds || o.win);
+      if (!combi || !odds) return;
+
+      if (!firstOdds.qin[combi]) firstOdds.qin[combi] = odds;
+      let change = ((odds - firstOdds.qin[combi]) / firstOdds.qin[combi] * 100);
+
+      if (change <= -5) { // 跌幅達 5% 或以上納入監測
+        comboDrops.push({ type: 'QIN 連贏', combi: combi, odds: odds, change: change });
+      }
+    });
+
+    // 4. 解析 QPL (位置連贏) 落飛
+    if (qplPool?.oddsNodes) {
+      qplPool.oddsNodes.forEach(o => {
+        let combi = o.combi;
+        let odds = parseFloat(o.odds);
+        if (!combi || !odds) return;
+
+        if (!firstOdds.qpl[combi]) firstOdds.qpl[combi] = odds;
+        let change = ((odds - firstOdds.qpl[combi]) / firstOdds.qpl[combi] * 100);
+
+        if (change <= -5) {
+          comboDrops.push({ type: 'QPL 位置Q', combi: combi, odds: odds, change: change });
+        }
+      });
+    }
+
+    // 渲染 QIN/QPL 大單急跌卡片 (顯示 Top 6 跌得最猛烈的組合)
+    if (comboDrops.length > 0) {
+      comboDrops.sort((a, b) => a.change - b.change); // 跌最多排最前
+      let top6 = comboDrops.slice(0, 6);
+      let comboHtml = "";
+      top6.forEach(c => {
+        comboHtml += `
+          <div class="combo-card">
+            <div style="font-size:9px;color:#888">${c.type}</div>
+            <div class="combo-name">${c.combi}</div>
+            <div class="combo-odds">${c.odds.toFixed(1)}</div>
+            <div class="combo-drop">落 ${c.change.toFixed(0)}%</div>
+          </div>`;
+      });
+      document.getElementById("comboGrid").innerHTML = comboHtml;
+      document.getElementById("alertSection").style.display = "block";
+    } else {
+      document.getElementById("alertSection").style.display = "none";
+    }
+
+    // 渲染馬匹 WIN & PLA 列表
+    let runnerList = Object.values(runnersMap).sort((a, b) => a.no - b.no);
+
+    if (runnerList.length === 0) {
       document.getElementById("list").innerHTML = `
         <div style="padding:30px 20px;color:#888;text-align:center">
-          第 ${currentRace} 場已連接馬會，等待開市/無數據<br>
-          <small style="font-size:10px;color:#555">${txt.slice(0, 100)}</small>
+          第 ${currentRace} 場未開市或無數據<br>
+          <small style="font-size:10px;color:#555">${txt.slice(0, 80)}</small>
         </div>`;
-      document.getElementById("status").innerText = `已連線 (無數據)`;
+      document.getElementById("status").innerText = `狀態: 已連線 (無數據)`;
       return;
     }
 
     let html = "";
-    runners.forEach(run => {
-      let no = run.No || run.no;
-      let win = parseFloat(run.WIN || run.win || run.odds);
-      if (!win) return;
+    runnerList.forEach(run => {
+      let no = run.no;
+      let win = run.win;
+      let pla = run.pla;
 
-      // 紀錄第一次獲取到的賠率作為基準算落飛
-      if (!firstOdds[no]) firstOdds[no] = win;
+      if (!firstOdds.win[no] && win) firstOdds.win[no] = win;
+      if (!firstOdds.pla[no] && pla) firstOdds.pla[no] = pla;
 
-      let change = ((win - firstOdds[no]) / firstOdds[no] * 100);
-      let cls = change < -10 ? "drop" : (change > 10 ? "rise" : "");
-      let label = change < -10 ? `落飛 ${change.toFixed(1)}%` : (change > 10 ? `↑ ${change.toFixed(1)}%` : `${change.toFixed(1)}%`);
+      let winChange = (firstOdds.win[no] && win) ? ((win - firstOdds.win[no]) / firstOdds.win[no] * 100) : 0;
+      let winCls = winChange < -10 ? "drop" : (winChange > 10 ? "rise" : "");
+      let winLabel = winChange < -10 ? `落${winChange.toFixed(0)}%` : (winChange > 10 ? `↑${winChange.toFixed(0)}%` : `-`);
+
+      let plaChange = (firstOdds.pla[no] && pla) ? ((pla - firstOdds.pla[no]) / firstOdds.pla[no] * 100) : 0;
+      let plaCls = plaChange < -10 ? "drop" : (plaChange > 10 ? "rise" : "");
+      let plaLabel = plaChange < -10 ? `落${plaChange.toFixed(0)}%` : (plaChange > 10 ? `↑${plaChange.toFixed(0)}%` : `-`);
 
       html += `
         <div class="odds-card">
-          <div class="horse-num">${no}號 ${run.Name || ''}</div>
-          <div>
-            <span class="odds-val">${win.toFixed(1)}</span>
-            <span class="badge ${cls}">${label}</span>
+          <div class="horse-info">${no}號</div>
+          <div class="odds-group">
+            <div class="odds-box">
+              <span class="type-label">獨贏</span>
+              <span class="odds-val ${winCls}">${win ? win.toFixed(1) : '-'}</span>
+              <span class="badge ${winCls}">${winLabel}</span>
+            </div>
+            <div class="odds-box">
+              <span class="type-label">位置</span>
+              <span class="odds-val ${plaCls}">${pla ? pla.toFixed(1) : '-'}</span>
+              <span class="badge ${plaCls}">${plaLabel}</span>
+            </div>
           </div>
         </div>`;
     });
 
     document.getElementById("list").innerHTML = html;
-    document.getElementById("status").innerText = `R${currentRace} 真數據 ${new Date().toLocaleTimeString()} | ${runners.length}駒`;
+    document.getElementById("status").innerText = `R${currentRace} 真數據 ${new Date().toLocaleTimeString()} | ${runnerList.length} 駒`;
 
   } catch (e) {
     document.getElementById("status").innerText = "連線異常: " + e.message;
@@ -220,11 +355,8 @@ async function loadReal() {
   }
 }
 
-// 頁面初次載入執行
 initRaceButtons();
 loadReal();
-
-// 每 15 秒自動刷新賠率
 setInterval(loadReal, 15000);
 </script>
 
